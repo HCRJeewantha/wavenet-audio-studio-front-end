@@ -22,7 +22,7 @@ export class DashboardComponent implements OnInit {
 
   login(){
     const createUserModel = this.dialog.open(LoginComponent, {
-      width: '50%',
+      panelClass: 'popup-model',
       data: {},
     });
     createUserModel.afterClosed().subscribe(() => {});
@@ -30,7 +30,6 @@ export class DashboardComponent implements OnInit {
 
   register(){
     const createUserModel = this.dialog.open(RegistrationComponent, {
-      width: '50%',
       data: {},
     });
     createUserModel.afterClosed().subscribe(() => {});

@@ -19,6 +19,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConvertOutputModelComponent } from './pages/text-to-speech/convert-output-model/convert-output-model.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatInputModule} from '@angular/material/input';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +45,10 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatToolbarModule,
     MatListModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    MatInputModule,
+    MatCheckboxModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

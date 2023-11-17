@@ -1,1 +1,104 @@
-<p>login works!</p>
+<mat-card class="card">
+  <mat-card-content class="card-padding">
+    <div class="row m-0">
+      <div class="col-lg-12 d-flex">
+        <img class="mx-auto" src="../../../assets/images/logo.svg" alt="" />
+      </div>
+    </div>
+    <div class="row m-0">
+      <div class="col-lg-12 d-flex">
+        <img
+          class="mx-auto"
+          src="../../../assets/images/login-image.png"
+          alt=""
+        />
+      </div>
+    </div>
+    <div class="row m-0 spacing-level-2">
+      <div class="col-lg-12">
+        <div class="headline-6" style="font-weight: 500">
+          Welcome to WaveVox
+        </div>
+      </div>
+    </div>
+    <div class="row m-0 spacing-level-2">
+      <div class="col-lg-12">
+        <div class="body-1" style="font-weight: 400">
+          Please sign-in to your account and let the fun begin.
+        </div>
+      </div>
+    </div>
+    <form class="spacing-level-3">
+      <div class="row m-0">
+        <div class="col-lg-12">
+          <mat-form-field appearance="outline" class="w-100">
+            <input
+              type="email"
+              matInput
+              placeholder="Enter email"
+              [formControl]="email"
+            />
+            <mat-error *ngIf="email.hasError('required')">
+              Email is required.
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row m-0">
+        <div class="col-lg-12">
+          <mat-form-field appearance="outline" class="w-100">
+            <input
+              type="password"
+              matInput
+              placeholder="Enter password"
+              [formControl]="password"
+            />
+            <mat-error *ngIf="password.hasError('required')">
+              Password is required.
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </form>
+
+    <div class="row m-0">
+      <div class="col-lg-6 d-flex">
+        <section class="my-auto">
+          <mat-checkbox color="primary" class="example-margin"
+            ><div class="body-2 text-color-black">
+              Remember Me
+            </div></mat-checkbox
+          >
+        </section>
+      </div>
+
+      <div class="col-lg-6 d-flex">
+        <div
+          class="body-2 text-end my-auto"
+          style="color: #0066ff; margin-left: auto"
+        >
+          Forgot Password ?
+        </div>
+      </div>
+    </div>
+
+    <div class="row m-0 spacing-level-2">
+      <div class="col-lg-12">
+        <button
+          mat-raised-button
+          class="button w-100"
+          color="primary"
+          (click)="login()"
+        >
+          Sign in
+        </button>
+      </div>
+    </div>
+
+    <div class="row m-0 spacing-level-3">
+      <div class="col-lg-12 d-flex">
+        <div class="body-1 m-auto d-flex">New on our platform ? <div class="mx-1">Create an account</div></div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
