@@ -1,1 +1,259 @@
 /* You can add global styles to this file, and also import other style files */
+$indigo-palette: (
+  50: #f3e5f5,
+  100: #e1bee7,
+  200: #ce93d8,
+  300: #ba68c8,
+  400: #ab47bc,
+  500: #9c27b0,
+  600: #8e24aa,
+  700: #7b1fa2,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+  ),
+);
+
+$accent-palette: (
+  50: #f3e5f5,
+  100: #e1bee7,
+  200: #ce93d8,
+  300: #ba68c8,
+  400: #ab47bc,
+  500: #9c27b0,
+  600: #8e24aa,
+  700: #7b1fa2,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+  ),
+);
+
+@use "@angular/material" as mat;
+
+$my-palette: $indigo-palette;
+
+$my-primary: mat.define-palette($my-palette, 500);
+$my-accent: mat.define-palette($accent-palette, 500);
+
+$my-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $my-primary,
+      accent: $my-accent,
+    ),
+    typography: mat.define-typography-config(),
+    density: 0,
+  )
+);
+
+@include mat.all-component-themes($my-theme);
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.main-background-color {
+  background-color: #f3f3f3 !important;
+}
+
+.side-nav-content {
+  overflow-x: hidden !important;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+/**
+* Text Styles
+*/
+.headline-4 {
+  font-size: 2em;
+  font-family: Roboto;
+  line-height: 2.125em;
+  font-style: normal;
+  // letter-spacing: 0.009375em;
+  font-weight: 500;
+}
+
+.headline-5 {
+  font-size: 1.4375em;
+  font-family: Roboto;
+  line-height: 2.125em;
+  font-style: normal;
+  // letter-spacing: 0.009375em;
+  font-weight: 400;
+}
+
+.headline-6 {
+  font-size: 1.1875em;
+  font-family: Roboto;
+  line-height: 1.1875em;
+  font-style: normal;
+  // letter-spacing: 0.0625em;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+
+.subtitle-1 {
+  font-size: 1em;
+  font-weight: 400;
+  font-family: Roboto;
+  line-height: 1.5em;
+  font-style: normal;
+  // letter-spacing: 0.009375em;
+}
+
+.subtitle-2 {
+  font-size: 0.875em;
+  font-family: Roboto;
+  line-height: 21px;
+  font-style: normal;
+  // letter-spacing: 0.00625em;
+  font-weight: 400;
+}
+
+.body-1 {
+  font-size: 1em !important;
+  font-family: Roboto;
+  line-height: 1.3125em;
+  font-style: normal;
+  // letter-spacing: 0.03125em;
+  font-weight: 300;
+}
+
+.body-2 {
+  font-size: 0.875em !important;
+  font-family: Roboto;
+  line-height: 1.125em;
+  font-style: normal;
+  // letter-spacing: 0.015625em;
+  font-weight: 300;
+}
+
+.body-3 {
+  font-size: 0.625em;
+  font-family: Roboto;
+  line-height: 0.9375em;
+  font-style: normal;
+  // letter-spacing: 0.015625em;
+  font-weight: 300;
+}
+
+.body-4 {
+  font-size: 0.5em;
+  font-family: Roboto;
+  line-height: 0.75em;
+  font-style: normal;
+  // letter-spacing: 0.015625em;
+  font-weight: 300;
+}
+
+.caption {
+  font-size: 0.8em !important;
+  font-family: Roboto;
+  line-height: 1.125em;
+  font-style: normal;
+  // letter-spacing: 0.025em;
+  font-weight: 400;
+}
+
+.overline {
+  font-size: 0.625em;
+  font-family: Roboto;
+  line-height: 0.9375em;
+  font-style: normal;
+  // letter-spacing: 0.09375em;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.text-scale {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+}
+
+/**
+* Spacing levels
+*/
+
+.spacing-level-1 {
+  margin-top: 8px !important;
+}
+.spacing-level-2 {
+  margin-top: 16px !important;
+}
+.spacing-level-3 {
+  margin-top: 24px !important;
+}
+.spacing-level-4 {
+  margin-top: 32px !important;
+}
+.spacing-level-5 {
+  margin-top: 40px !important;
+}
+.spacing-level-6 {
+  margin-top: 56px !important;
+}
+.spacing-level-7 {
+  margin-top: 72px !important;
+}
+.spacing-level-8 {
+  margin-top: 80px !important;
+}
+.spacing-level-1 {
+  margin-top: 96px !important;
+}
+.spacing-level-1 {
+  margin-top: 120px !important;
+}
+
+/**
+* Side nav
+*/
+.mat-drawer-side {
+  border-right-color: #afafaf !important;
+}
+
+.toolbar {
+  border-bottom: 1px solid #afafaf;
+}
+
+/**
+* Button
+*/
+.button {
+  border-radius: 10px !important;
+  height: 3em !important;
+}
+
+/**
+* Card
+*/
+.card {
+  box-shadow: 1px 1px 6px 0px rgba(0, 0, 0, 0.25) !important;
+  border-radius: 12px !important;
+}

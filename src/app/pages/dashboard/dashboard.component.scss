@@ -1,0 +1,41 @@
+.main-container {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+}
+
+.mat-side-nav {
+  min-width: 100px !important;
+  max-width: 100px !important;
+}
+
+.center-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-icon {
+  padding: 12px;
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  cursor: pointer;
+
+  span {
+    color: #bb56f7;
+  }
+}
+
+.nav-icon:hover {
+  background-color: #aaaaaa1a;
+}
+
+.nav-bar-active {
+  background-color: #914cf834 !important;
+}
+
+.toolbar-spacer {
+    flex: 1 1 auto;
+  }
