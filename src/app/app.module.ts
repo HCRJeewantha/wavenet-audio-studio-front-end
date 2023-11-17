@@ -22,6 +22,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { HttpClientModule } from '@angular/common/http';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { AudioPlayerComponent } from './components/audio-player/audio-player.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +34,7 @@ import { HttpClientModule } from '@angular/common/http';
     SpeechToTextComponent,
     LibraryComponent,
     ConvertOutputModelComponent,
+    AudioPlayerComponent,
   ],
   imports: [
     FormsModule,
@@ -49,6 +52,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatInputModule,
     MatCheckboxModule,
     HttpClientModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent],

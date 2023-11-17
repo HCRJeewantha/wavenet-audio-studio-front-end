@@ -18,7 +18,10 @@ export class TextToSpeechComponent implements OnInit {
   convert() {
     const createUserModel = this.dialog.open(ConvertOutputModelComponent, {
       width: '50%',
-      data: {},
+      data: {
+        inputText: this.inputText,
+        gender: 'male'
+      },
     });
     createUserModel.afterClosed().subscribe(() => {});
   }

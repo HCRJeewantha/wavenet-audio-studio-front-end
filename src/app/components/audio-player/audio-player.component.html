@@ -1,0 +1,58 @@
+<div id="waveform"></div>
+
+<div class="row">
+  <div class="col-lg-12 d-flex justify-content-center">
+    <button
+      [disabled]="isDataLoaded"
+      *ngIf="!isAddedToPLaylist"
+      color="primary"
+      (click)="addToPlaylist()"
+      mat-icon-button
+    >
+      <span class="material-symbols-outlined"> playlist_add </span>
+    </button>
+    <button
+      [disabled]="isDataLoaded"
+      *ngIf="isAddedToPLaylist"
+      color="primary"
+      (click)="removeFromPlayList()"
+      mat-icon-button
+    >
+      <span class="material-symbols-outlined"> playlist_add_check </span>
+    </button>
+    <button
+      [disabled]="isDataLoaded"
+      color="primary"
+      (click)="restartAudio()"
+      mat-icon-button
+    >
+      <span class="material-symbols-outlined"> replay </span>
+    </button>
+    <button
+      [disabled]="isDataLoaded"
+      color="primary"
+      *ngIf="!isPlaying"
+      (click)="playAudio()"
+      mat-icon-button
+    >
+      <span class="material-symbols-outlined"> play_circle </span>
+    </button>
+    <button
+      [disabled]="isDataLoaded"
+      color="primary"
+      *ngIf="isPlaying"
+      (click)="pauseAudio()"
+      mat-icon-button
+    >
+      <span class="material-symbols-outlined"> pause_circle </span>
+    </button>
+    <button
+      [disabled]="isDataLoaded"
+      color="primary"
+      (click)="stopAudio()"
+      mat-icon-button
+    >
+      <span class="material-symbols-outlined"> stop_circle </span>
+    </button>
+  </div>
+</div>
