@@ -16,14 +16,14 @@ export class TextToSpeechComponent implements OnInit {
   ngOnInit(): void {}
 
   convert() {
-    const createUserModel = this.dialog.open(ConvertOutputModelComponent, {
+    const model = this.dialog.open(ConvertOutputModelComponent, {
       width: '50%',
       data: {
         inputText: this.inputText,
         gender: 'male'
       },
     });
-    createUserModel.afterClosed().subscribe(() => {});
+    model.afterClosed().subscribe(() => {});
   }
 
   updateWordCount() {

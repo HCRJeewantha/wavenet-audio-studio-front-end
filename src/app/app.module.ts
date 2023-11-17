@@ -18,12 +18,14 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConvertOutputModelComponent } from './pages/text-to-speech/convert-output-model/convert-output-model.component';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatInputModule} from '@angular/material/input';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { HttpClientModule } from '@angular/common/http';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { AudioPlayerComponent } from './components/audio-player/audio-player.component';
+import { MatRippleModule } from '@angular/material/core';
+import { RecordAudioModelComponent } from './pages/speech-to-text/record-audio-model/record-audio-model.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +37,7 @@ import { AudioPlayerComponent } from './components/audio-player/audio-player.com
     LibraryComponent,
     ConvertOutputModelComponent,
     AudioPlayerComponent,
+    RecordAudioModelComponent,
   ],
   imports: [
     FormsModule,
@@ -52,7 +55,8 @@ import { AudioPlayerComponent } from './components/audio-player/audio-player.com
     MatInputModule,
     MatCheckboxModule,
     HttpClientModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatRippleModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

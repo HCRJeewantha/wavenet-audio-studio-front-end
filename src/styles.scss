@@ -259,16 +259,22 @@ body {
 }
 
 .card-padding {
-    padding-top: 50px !important;
-    padding-bottom: 30px !important;
-    padding-left: 30px !important;
-    padding-right: 30px !important;
-  }
-  
+  padding-top: 50px !important;
+  padding-bottom: 30px !important;
+  padding-left: 30px !important;
+  padding-right: 30px !important;
+}
 
 /**
 * Popup Models
 */
 .popup-model {
   border-radius: 12px !important;
+}
+
+/**
+* Icons
+*/
+.secondary-icon {
+  color: #585858;
 }

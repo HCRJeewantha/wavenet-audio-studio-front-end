@@ -1,1 +1,40 @@
-<p>speech-to-text works!</p>
+<div class="row d-flex">
+  <div class="col-lg-8 m-auto">
+    <mat-card class="card h-100">
+      <mat-card-content class="card-padding">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="headline-5 text-center" style="font-weight: 500">
+              Please choose your audio input method
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="subtitle-1 text-center">
+              You can either upload an audio file or use the record feature to
+              generate text.
+            </div>
+          </div>
+        </div>
+
+        <div class="row spacing-level-4">
+          <div class="col-lg-6">
+            <mat-card matRipple class="card h-100">
+              <mat-card-content class="card-padding"
+                >Upload</mat-card-content
+              ></mat-card
+            >
+          </div>
+          <div class="col-lg-6">
+            <mat-card (click)="recordAudio()" matRipple class="card h-100">
+              <mat-card-content class="card-padding"
+                >Record</mat-card-content
+              ></mat-card
+            >
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

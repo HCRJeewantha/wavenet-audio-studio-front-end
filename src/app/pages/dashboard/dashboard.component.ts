@@ -21,17 +21,17 @@ export class DashboardComponent implements OnInit {
   }
 
   login(){
-    const createUserModel = this.dialog.open(LoginComponent, {
+    const model = this.dialog.open(LoginComponent, {
       panelClass: 'popup-model',
       data: {},
     });
-    createUserModel.afterClosed().subscribe(() => {});
+    model.afterClosed().subscribe(() => {});
   }
 
   register(){
-    const createUserModel = this.dialog.open(RegistrationComponent, {
+    const model = this.dialog.open(RegistrationComponent, {
       data: {},
     });
-    createUserModel.afterClosed().subscribe(() => {});
+    model.afterClosed().subscribe(() => {});
   }
 }
