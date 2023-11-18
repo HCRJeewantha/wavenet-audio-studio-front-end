@@ -1,6 +1,10 @@
 <div class="main-container">
   <mat-toolbar class="py-3 toolbar" style="background-color: #fff">
-   <img src="../../../assets/images/logo.svg" alt="">
+    <img src="../../../assets/images/logo.svg" alt="" />
+    <span class="toolbar-spacer"></span>
+    <div>
+      {{ title }}
+    </div>
     <span class="toolbar-spacer"></span>
     <button mat-raised-button class="button mx-2" (click)="login()">
       Sign in

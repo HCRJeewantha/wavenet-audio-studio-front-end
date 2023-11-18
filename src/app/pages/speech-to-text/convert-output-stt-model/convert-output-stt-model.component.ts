@@ -39,6 +39,10 @@ export class ConvertOutputSttModelComponent {
 
   }
 
+  close(){
+    this.dialogRef.close()
+  }
+
   getTextToAudio() {
     this.isDataLoaded = true;
   }

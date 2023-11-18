@@ -20,12 +20,16 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class AudioPlayerComponent implements OnInit, AfterViewInit, OnDestroy {
   isDataLoaded: boolean = false;
+  @Input() type: number;
 
   @Input() audioUrl: string;
   private wavesurfer: WaveSurfer;
 
+  @Input() audioFile: File;
+
   isPlaying: boolean = false;
   isAddedToPLaylist: boolean = false;
+  playlistId: number | null;
 
   constructor(
     private elementRef: ElementRef,
@@ -88,10 +92,39 @@ export class AudioPlayerComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   addToPlaylist() {
-    this.isAddedToPLaylist = true;
+    const formData = new FormData();
+    formData.append('file', this.audioFile, this.audioFile.name);
+
+    this.isDataLoaded = true;
+    this.apiService
+      .post(
+        formData,
+        String(this.storageService.getToken()),
+        `/audio-manager/save-audio/${this.type}`,
+        'multipart/form-data'
+      )
+      .then((response: any) => {
+        this.isAddedToPLaylist = true;
+
+        this.isDataLoaded = false;
+        this.playlistId = response.result.id;
+      })
+      .catch((error: any) => {
+        this.isDataLoaded = false;
+      });
   }
 
   removeFromPlayList() {
-    this.isAddedToPLaylist = false;
+    this.apiService
+      .delete(
+        String(this.storageService.getToken()),
+        `/audio-manager/remove-audio/${this.playlistId}`
+      )
+      .then((response: any) => {
+        this.isAddedToPLaylist = false;
+
+        this.playlistId = null;
+      })
+      .catch((error: any) => {});
   }
 }
