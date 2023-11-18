@@ -1,6 +1,8 @@
 import { Component, OnDestroy } from '@angular/core';
 import { AudioService } from 'src/app/audio.service';
 import { Subscription } from 'rxjs';
+import { ApiService } from 'src/app/services/api.service';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-record-audio-model',
@@ -12,7 +14,11 @@ export class RecordAudioModelComponent implements OnDestroy {
   private recordingTimeSubscription: Subscription;
   isRecordClicked: boolean = false;
   isPlaying: boolean = false;
-  constructor(private audioService: AudioService) {
+  constructor(
+    private apiService: ApiService,
+    private storageService: StorageService,
+    private audioService: AudioService
+  ) {
     this.recordingTimeSubscription = this.audioService
       .getRecordingTime()
       .subscribe((time) => {
@@ -29,7 +35,6 @@ export class RecordAudioModelComponent implements OnDestroy {
   stopRecording() {
     this.isRecordClicked = false;
     this.audioService.stopRecording();
-   
   }
 
   playRecord() {
@@ -40,14 +45,26 @@ export class RecordAudioModelComponent implements OnDestroy {
   pauseRecord() {
     this.isPlaying = false;
     this.audioService.pauseAudio();
-
   }
 
   ngOnDestroy() {
     this.recordingTimeSubscription.unsubscribe();
   }
 
-  uploadAudio(){
+  uploadAudio() {
+    // const data = {
+    //   file: this.audioService.uploadAudio()
+    // };
     this.audioService.uploadAudio()
+    // this.apiService
+    //   .post(
+    //     data,
+    //     String(this.storageService.getToken()),
+    //     `/audio-manager/convert-audio-to-text`
+    //   )
+    //   .then((response: any) => {
+    //     console.log(response);
+    //   })
+    //   .catch((error: any) => {});
   }
 }

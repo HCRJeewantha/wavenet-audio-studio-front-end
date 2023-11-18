@@ -27,7 +27,7 @@ export class ApiService {
     const custom = {
       headers: new HttpHeaders({
         Accept: 'application/json',
-        contentType: 'application/json',
+        contentType: contentType,
         Authorization: 'Bearer ' + token,
       }),
     };

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import WaveSurfer from 'wavesurfer.js';
 import { Subject, Observable } from 'rxjs';
+import { StorageService } from './services/storage.service';
+import { ApiService } from './services/api.service';
 
 @Injectable({
   providedIn: 'root',
@@ -10,11 +12,15 @@ export class AudioService {
   private audioChunks: Blob[] = [];
   private wavesurfer: WaveSurfer;
   private recordingTimeSubject = new Subject<string>();
-  public audioFile: any;
+  public audioFile: File;
   private recordingStartTime: number;
 
+  constructor(
+    private apiService: ApiService,
+    private storageService: StorageService
+  ) {}
+
   startRecording() {
-    // Destroy the current Wavesurfer instance if it exists
     if (this.wavesurfer) {
       this.wavesurfer.destroy();
     }
@@ -33,15 +39,17 @@ export class AudioService {
       };
 
       this.mediaRecorder.onstop = () => {
-        const audioBlob = new Blob(this.audioChunks, { type: 'audio/wav' });
-        const audioUrl = URL.createObjectURL(audioBlob);
-        console.log('Audio URL:', audioUrl);
+        // Check if there are audio chunks
+        if (this.audioChunks.length > 0) {
+          const audioBlob = new Blob(this.audioChunks, { type: 'audio/wav' });
+          console.log('Audio Blob Size:', audioBlob.size);
 
-        this.audioFile = new File([audioBlob], 'recorded_audio.wav', {
-          type: 'audio/wav',
-        });
+          this.audioFile = new File([audioBlob], 'recorded_audio.wav', {
+            type: 'audio/wav',
+          });
 
-        this.recordingTimeSubject.complete();
+          this.recordingTimeSubject.complete();
+        }
       };
 
       this.mediaRecorder.start();
@@ -98,6 +106,20 @@ export class AudioService {
   }
 
   uploadAudio() {
-    console.log(this.audioFile);
+    const formData = new FormData();
+    formData.append('file', this.audioFile, this.audioFile.name);
+
+    this.apiService
+      .post(
+        formData,
+        String(this.storageService.getToken()),
+        `/audio-manager/convert-audio-to-text`,
+        'multipart/form-data'
+      )
+      .then((response: any) => {
+        console.log(response);
+      })
+      .catch((error: any) => {});
+    return this.audioFile;
   }
 }
