@@ -4,7 +4,7 @@ import { RecordAudioModelComponent } from './record-audio-model/record-audio-mod
 import { MatDialog } from '@angular/material/dialog';
 import { ApiService } from 'src/app/services/api.service';
 import { StorageService } from 'src/app/services/storage.service';
-import { ConvertOutputModelComponent } from './convert-output-model/convert-output-model.component';
+import { ConvertOutputSttModelComponent } from './convert-output-stt-model/convert-output-stt-model.component';
 
 @Component({
   selector: 'app-speech-to-text',
@@ -12,6 +12,7 @@ import { ConvertOutputModelComponent } from './convert-output-model/convert-outp
   styleUrls: ['./speech-to-text.component.scss'],
 })
 export class SpeechToTextComponent {
+  isDataLoaded: boolean = false;
   audioFile: File | null = null;
   @ViewChild('fileInput') fileInput: any;
 
@@ -42,10 +43,10 @@ export class SpeechToTextComponent {
 
     if (fileList.length > 0) {
       this.audioFile = fileList[0];
-      
+
       const formData = new FormData();
       formData.append('file', this.audioFile, this.audioFile.name);
-
+      this.isDataLoaded = true;
       this.apiService
         .post(
           formData,
@@ -54,16 +55,20 @@ export class SpeechToTextComponent {
           'multipart/form-data'
         )
         .then((response: any) => {
-          const model = this.dialog.open(ConvertOutputModelComponent, {
+          this.isDataLoaded = false;
+          const model = this.dialog.open(ConvertOutputSttModelComponent, {
             panelClass: 'popup-model',
             data: {
-              response: response
+              response: response,
+              audio: this.audioFile
             },
             width: '40%',
           });
           model.afterClosed().subscribe(() => {});
         })
-        .catch((error: any) => {});
+        .catch((error: any) => {
+          this.isDataLoaded = false;
+        });
     }
   }
 }

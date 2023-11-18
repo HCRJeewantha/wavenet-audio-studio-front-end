@@ -26,6 +26,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { AudioPlayerComponent } from './components/audio-player/audio-player.component';
 import { MatRippleModule } from '@angular/material/core';
 import { RecordAudioModelComponent } from './pages/speech-to-text/record-audio-model/record-audio-model.component';
+import { ConvertOutputSttModelComponent } from './pages/speech-to-text/convert-output-stt-model/convert-output-stt-model.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +39,7 @@ import { RecordAudioModelComponent } from './pages/speech-to-text/record-audio-m
     ConvertOutputModelComponent,
     AudioPlayerComponent,
     RecordAudioModelComponent,
+    ConvertOutputSttModelComponent,
   ],
   imports: [
     FormsModule,

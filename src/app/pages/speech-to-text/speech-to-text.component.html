@@ -1,6 +1,11 @@
 <div class="row d-flex">
   <div class="col-lg-8 m-auto">
     <mat-card class="card h-100">
+      <mat-progress-bar
+        *ngIf="isDataLoaded"
+        color="primary"
+        mode="indeterminate"
+      ></mat-progress-bar>
       <mat-card-content class="card-padding">
         <div class="row">
           <div class="col-lg-12">
