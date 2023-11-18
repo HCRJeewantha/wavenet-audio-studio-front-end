@@ -7,16 +7,13 @@
     </div>
     <span class="toolbar-spacer"></span>
     <div *ngIf="!isUserLoggedIn">
-      <button mat-raised-button class="button mx-2" (click)="login()">
-        Sign in
-      </button>
       <button
         mat-raised-button
         class="button"
         color="primary"
-        (click)="register()"
+        (click)="login()"
       >
-        Sign up
+        Sign in
       </button>
     </div>
     <div *ngIf="isUserLoggedIn">
