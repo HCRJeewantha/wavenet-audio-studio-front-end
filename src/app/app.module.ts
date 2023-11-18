@@ -27,6 +27,7 @@ import { AudioPlayerComponent } from './components/audio-player/audio-player.com
 import { MatRippleModule } from '@angular/material/core';
 import { RecordAudioModelComponent } from './pages/speech-to-text/record-audio-model/record-audio-model.component';
 import { ConvertOutputSttModelComponent } from './pages/speech-to-text/convert-output-stt-model/convert-output-stt-model.component';
+import { MatTableModule } from '@angular/material/table';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,6 +60,7 @@ import { ConvertOutputSttModelComponent } from './pages/speech-to-text/convert-o
     HttpClientModule,
     MatProgressBarModule,
     MatRippleModule,
+    MatTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

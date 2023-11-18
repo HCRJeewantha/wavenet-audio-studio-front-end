@@ -23,7 +23,7 @@ export class AudioPlayerComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() type: number;
 
   @Input() audioUrl: string;
-  private wavesurfer: WaveSurfer;
+  private wavesurfer: WaveSurfer | null;
 
   @Input() audioFile: File;
 
@@ -50,7 +50,8 @@ export class AudioPlayerComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-  private initWaveSurfer() {
+  public initWaveSurfer() {
+    this.destroyWaveSurfer();
     const element = this.elementRef.nativeElement.querySelector('#waveform');
     this.wavesurfer = WaveSurfer.create({
       container: element,
@@ -61,7 +62,13 @@ export class AudioPlayerComponent implements OnInit, AfterViewInit, OnDestroy {
     // Load audio file
     this.wavesurfer.load(this.audioUrl);
   }
-
+  private destroyWaveSurfer() {
+    if (this.wavesurfer) {
+      this.wavesurfer.destroy();
+      this.wavesurfer = null;
+    }
+  }
+  
   playAudio() {
     this.isPlaying = true;
     if (this.wavesurfer) {
