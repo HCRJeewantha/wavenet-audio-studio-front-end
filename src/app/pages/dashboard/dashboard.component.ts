@@ -22,14 +22,15 @@ export class DashboardComponent implements OnInit {
     private storageService: StorageService
   ) {
     this.user = this.storageService.getUser();
-
   }
 
   ngOnInit(): void {
+   
     if (this.storageService.getToken() != null) {
       this.isUserLoggedIn = true;
     } else {
       this.isUserLoggedIn = false;
+      this.login();
     }
   }
 
@@ -54,11 +55,12 @@ export class DashboardComponent implements OnInit {
     const model = this.dialog.open(LoginComponent, {
       panelClass: 'popup-model',
       data: {},
+      disableClose: true,
     });
     model.afterClosed().subscribe(() => {
-      console.log(this.storageService.getToken() );
-      
-      if (this.storageService.getToken() != "") {
+      console.log(this.storageService.getToken());
+
+      if (this.storageService.getToken() != '') {
         this.isUserLoggedIn = true;
       } else {
         this.isUserLoggedIn = false;
