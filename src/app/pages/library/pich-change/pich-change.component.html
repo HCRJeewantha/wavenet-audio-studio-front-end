@@ -18,14 +18,69 @@
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-lg-12">
-        <app-audio-player
-          *ngIf="!isDataLoaded"
-          [audioUrl]="audioUrl"
-          [audioFile]="audioFile"
-          [type]="3"
-        ></app-audio-player>
+    <div class="row spacing-level-4">
+      <div class="col-lg-6">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="body-1" style="font-weight: 400">Original</div>
+          </div>
+        </div>
+        <div class="row spacing-level-2">
+          <div class="col-lg-12">
+            <app-audio-player
+              *ngIf="!isDataLoaded"
+              [audioUrl]="audioUrl"
+              [audioFile]="audioFile"
+            ></app-audio-player>
+          </div>
+        </div>
       </div>
-    </div> </mat-card-content
-></mat-card>
+      <div class="col-lg-6">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="body-1" style="font-weight: 400">Converted</div>
+          </div>
+        </div>
+        <div class="row spacing-level-2">
+          <div class="col-lg-12">
+            <app-audio-player
+              *ngIf="!isDataLoaded"
+              [audioUrl]="convertedAudioUrl"
+              [audioFile]="convertedAudioFile"
+              [type]="3"
+            ></app-audio-player>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="spacing-level-3" />
+
+    <div class="row mt-1">
+      <div class="col-lg-12">
+        <div class="body-1">Adjust Pitch To Create New Voices</div>
+      </div>
+    </div>
+
+    <div class="row m-0 spacing-level-2">
+      <div class="col-lg-10">
+        <mat-slider
+          min="-10"
+          max="10"
+          step="1"
+          value="0"
+          class="w-100"
+          showTickMarks
+          [displayWith]="formatLabel"
+        >
+          <input [(ngModel)]="pitch" matSliderThumb />
+        </mat-slider>
+      </div>
+      <div class="col-lg-2">
+        <button (click)="convertAudio()" mat-raised-button color="primary">
+          Convert
+        </button>
+      </div>
+    </div>
+  </mat-card-content></mat-card
+>

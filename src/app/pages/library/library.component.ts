@@ -24,7 +24,7 @@ export class LibraryComponent implements OnInit {
   dataSource: any;
   isDataLoaded: boolean = false;
   isAudioLoaded: boolean = false;
-  library: any;
+  library: any[] = [];
   audioUrl: string;
   audio: any;
   @ViewChild(AudioPlayerComponent) audioPlayerComponent!: AudioPlayerComponent;
@@ -76,7 +76,9 @@ export class LibraryComponent implements OnInit {
         audio: this.audio,
       },
     });
-    model.afterClosed().subscribe(() => {});
+    model.afterClosed().subscribe(() => {
+      this.getLibrary();
+    });
   }
 
   getAudio(path: string) {
