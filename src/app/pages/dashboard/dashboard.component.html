@@ -6,17 +6,24 @@
       {{ title }}
     </div>
     <span class="toolbar-spacer"></span>
-    <button mat-raised-button class="button mx-2" (click)="login()">
-      Sign in
-    </button>
-    <button
-      mat-raised-button
-      class="button"
-      color="primary"
-      (click)="register()"
-    >
-      Sign up
-    </button>
+    <div *ngIf="!isUserLoggedIn">
+      <button mat-raised-button class="button mx-2" (click)="login()">
+        Sign in
+      </button>
+      <button
+        mat-raised-button
+        class="button"
+        color="primary"
+        (click)="register()"
+      >
+        Sign up
+      </button>
+    </div>
+    <div *ngIf="isUserLoggedIn">
+      <div class="avatar" style="margin: auto !important">
+        <img src="{{ userProfileImage }}" alt="" />
+      </div>
+    </div>
   </mat-toolbar>
   <mat-sidenav-container class="h-100 m-auto">
     <mat-sidenav [mode]="'side'" opened class="mat-side-nav">

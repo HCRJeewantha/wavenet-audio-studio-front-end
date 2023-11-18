@@ -3,6 +3,7 @@ import { AudioService } from 'src/app/audio.service';
 import { Subscription } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';
 import { StorageService } from 'src/app/services/storage.service';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-record-audio-model',
@@ -17,7 +18,8 @@ export class RecordAudioModelComponent implements OnDestroy {
   constructor(
     private apiService: ApiService,
     private storageService: StorageService,
-    private audioService: AudioService
+    private audioService: AudioService,
+    public dialogRef: MatDialogRef<RecordAudioModelComponent>
   ) {
     this.recordingTimeSubscription = this.audioService
       .getRecordingTime()
@@ -26,6 +28,10 @@ export class RecordAudioModelComponent implements OnDestroy {
       });
   }
 
+  close() {
+    this.dialogRef.close();
+  }
+  
   startRecording() {
     this.isRecordClicked = true;
     this.audioService.destroyWavesurfer();
@@ -55,7 +61,7 @@ export class RecordAudioModelComponent implements OnDestroy {
     // const data = {
     //   file: this.audioService.uploadAudio()
     // };
-    this.audioService.uploadAudio()
+    this.audioService.uploadAudio();
     // this.apiService
     //   .post(
     //     data,

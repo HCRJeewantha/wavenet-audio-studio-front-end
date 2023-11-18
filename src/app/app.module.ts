@@ -28,6 +28,9 @@ import { MatRippleModule } from '@angular/material/core';
 import { RecordAudioModelComponent } from './pages/speech-to-text/record-audio-model/record-audio-model.component';
 import { ConvertOutputSttModelComponent } from './pages/speech-to-text/convert-output-stt-model/convert-output-stt-model.component';
 import { MatTableModule } from '@angular/material/table';
+import { MatSliderModule } from '@angular/material/slider';
+import { PichChangeComponent } from './pages/library/pich-change/pich-change.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +44,7 @@ import { MatTableModule } from '@angular/material/table';
     AudioPlayerComponent,
     RecordAudioModelComponent,
     ConvertOutputSttModelComponent,
+    PichChangeComponent,
   ],
   imports: [
     FormsModule,
@@ -61,6 +65,7 @@ import { MatTableModule } from '@angular/material/table';
     MatProgressBarModule,
     MatRippleModule,
     MatTableModule,
+    MatSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -12,6 +12,9 @@ import { StorageService } from 'src/app/services/storage.service';
 export class LoginComponent implements OnInit {
   email = new FormControl('', [Validators.required]);
   password = new FormControl('', [Validators.required]);
+  username = new FormControl('', [Validators.required]);
+
+  isRegistrationOpen: boolean = false;
 
   constructor(
     private apiService: ApiService,
@@ -44,5 +47,38 @@ export class LoginComponent implements OnInit {
           }
         });
     }
+  }
+
+  register(){
+    if (this.email.valid && this.password.valid && this.username.valid) {
+      const data = {
+        primary_email: this.email.value,
+        password: this.password.value,
+        username: this.username.value,
+      };
+      this.apiService
+        .post(
+          data,
+          String(this.storageService.getToken()),
+          `/user-manager/create-account`
+        )
+        .then((response: any) => {
+          this.storageService.saveToken(response.token);
+          this.storageService.saveUser(response.result);
+          this.dialogRef.close();
+        })
+        .catch((error: any) => {
+          if (error.status != 404 || error.status != 422) {
+            this.dialogRef.close();
+          }
+        });
+    }
+  }
+
+  createAccount() {
+    this.isRegistrationOpen = true;
+  }
+  signIn() {
+    this.isRegistrationOpen = false;
   }
 }

@@ -74,7 +74,7 @@ body {
 }
 
 .main-background-color {
-  background-color: #f3f3f3 !important;
+  background-color: #f6f0ff !important;
 }
 
 .side-nav-content {
@@ -282,4 +282,21 @@ body {
 mat-row:hover {
   background-color: #f9f2fe !important; /* Change the background color on hover */
   transition: background-color 0.3s ease;
+}
+
+/**
+* Avatar
+*/
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #f3ebff;
+  img {
+    border-radius: 50% !important;
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    margin: auto;
+  }
 }

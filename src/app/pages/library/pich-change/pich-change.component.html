@@ -1,0 +1,31 @@
+<mat-card class="card">
+  <!-- <mat-progress-bar
+      *ngIf="isDataLoaded"
+      color="primary"
+      mode="indeterminate"
+    ></mat-progress-bar> -->
+  <mat-card-content class="card-padding">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="headline-5 text-center" style="font-weight: 500">
+          Magic Voice
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="subtitle-1 text-center">Customize your audio from here</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12">
+        <app-audio-player
+          *ngIf="!isDataLoaded"
+          [audioUrl]="audioUrl"
+          [audioFile]="audioFile"
+          [type]="3"
+        ></app-audio-player>
+      </div>
+    </div> </mat-card-content
+></mat-card>

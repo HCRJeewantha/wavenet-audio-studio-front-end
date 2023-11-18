@@ -5,6 +5,8 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { environment } from 'src/environments/environment.prod';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { AudioPlayerComponent } from 'src/app/components/audio-player/audio-player.component';
+import { MatDialog } from '@angular/material/dialog';
+import { PichChangeComponent } from './pich-change/pich-change.component';
 
 export interface PeriodicElement {
   name: string;
@@ -21,13 +23,16 @@ export class LibraryComponent implements OnInit {
   displayedColumns: string[] = ['no', 'name', 'type', 'favorite'];
   dataSource: any;
   isDataLoaded: boolean = false;
+  isAudioLoaded: boolean = false;
   library: any;
   audioUrl: string;
+  audio: any;
   @ViewChild(AudioPlayerComponent) audioPlayerComponent!: AudioPlayerComponent;
   constructor(
     private apiService: ApiService,
     private storageService: StorageService,
-    private http: HttpClient
+    private http: HttpClient,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -62,7 +67,20 @@ export class LibraryComponent implements OnInit {
       .catch((error: any) => {});
   }
 
+  changePitch() {
+    const model = this.dialog.open(PichChangeComponent, {
+      panelClass: 'popup-model',
+      width: '50%',
+      data: {
+        audioUrl: this.audioUrl,
+        audio: this.audio,
+      },
+    });
+    model.afterClosed().subscribe(() => {});
+  }
+
   getAudio(path: string) {
+    this.isAudioLoaded = true;
     this.isDataLoaded = true;
     const data = {
       path: path,
@@ -81,13 +99,16 @@ export class LibraryComponent implements OnInit {
       .subscribe(
         (data: any) => {
           const blob = new Blob([data.body], { type: 'audio/wav' });
+          this.audio = blob;
           const url = window.URL.createObjectURL(blob);
           this.audioUrl = url;
           this.isDataLoaded = false;
+          this.isAudioLoaded = false;
           this.audioPlayerComponent.initWaveSurfer();
         },
         (error) => {
           this.isDataLoaded = false;
+          this.isAudioLoaded = false;
         }
       );
   }
