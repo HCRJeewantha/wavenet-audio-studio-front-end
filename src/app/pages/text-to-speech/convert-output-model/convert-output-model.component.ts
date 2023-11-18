@@ -21,7 +21,7 @@ import { environment } from 'src/environments/environment.prod';
 export class ConvertOutputModelComponent implements OnInit {
   isDataLoaded: boolean = false;
   audioUrl: string;
-
+  audioFile: any;
   isPlaying: boolean = false;
   isAddedToPLaylist: boolean = false;
 
@@ -35,6 +35,10 @@ export class ConvertOutputModelComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTextToAudio();
+  }
+
+  close() {
+    this.dialogRef.close();
   }
 
   getTextToAudio() {
@@ -57,6 +61,7 @@ export class ConvertOutputModelComponent implements OnInit {
         (data: any) => {
           const blob = new Blob([data.body], { type: 'audio/wav' });
           const url = window.URL.createObjectURL(blob);
+          this.audioFile = blob;
           this.audioUrl = url;
           this.isDataLoaded = false;
         },
@@ -64,5 +69,16 @@ export class ConvertOutputModelComponent implements OnInit {
           this.isDataLoaded = false;
         }
       );
+  }
+
+  downloadBlob(blob: Blob, filename: string): void {
+    const blobUrl = URL.createObjectURL(blob);
+    const downloadLink = document.createElement('a');
+    downloadLink.href = blobUrl;
+    downloadLink.download = filename;
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    document.body.removeChild(downloadLink);
+    URL.revokeObjectURL(blobUrl);
   }
 }

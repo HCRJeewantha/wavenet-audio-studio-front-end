@@ -20,7 +20,12 @@
       </div>
     </div>
 
-    <app-audio-player *ngIf="!isDataLoaded" [audioUrl]="audioUrl"></app-audio-player>
+    <app-audio-player
+      *ngIf="!isDataLoaded"
+      [audioUrl]="audioUrl"
+      [audioFile]="audioFile"
+      [type]="2"
+    ></app-audio-player>
 
     <div class="row spacing-level-4">
       <div class="col-lg-12">
@@ -37,6 +42,7 @@
       <div class="col-lg-12 d-flex">
         <div class="m-auto d-flex">
           <button
+            (click)="close()"
             color="primary"
             class="button mx-2"
             mat-stroked-button
@@ -44,7 +50,7 @@
           >
             Close
           </button>
-          <button color="primary" class="button" mat-flat-button>
+          <button (click)="downloadBlob(audioFile,'wave_vox_text_to_speech')" color="primary" class="button" mat-flat-button>
             Download
           </button>
         </div>
