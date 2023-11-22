@@ -300,3 +300,25 @@ mat-row:hover {
     margin: auto;
   }
 }
+
+/*
+* Snack bars
+*/
+.mat-mdc-snack-bar-container {
+  --mat-mdc-snack-bar-button-color: #ffffff;
+  --mdc-snackbar-supporting-text-color: #ffffff;
+
+  &.app-notification-error {
+    --mdc-snackbar-container-color: #921e1ee0;
+    border-radius: 10px !important;
+  }
+
+  &.app-notification-success {
+    --mdc-snackbar-container-color: #1e9222e0;
+    border-radius: 10px !important;
+  }
+}
+
+.mat-mdc-snack-bar-container .mdc-snackbar__surface {
+  border-radius: 12px !important;
+}

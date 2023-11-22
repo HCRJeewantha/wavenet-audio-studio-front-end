@@ -30,6 +30,8 @@ import { ConvertOutputSttModelComponent } from './pages/speech-to-text/convert-o
 import { MatTableModule } from '@angular/material/table';
 import { MatSliderModule } from '@angular/material/slider';
 import { PichChangeComponent } from './pages/library/pich-change/pich-change.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -65,7 +67,9 @@ import { PichChangeComponent } from './pages/library/pich-change/pich-change.com
     MatProgressBarModule,
     MatRippleModule,
     MatTableModule,
-    MatSliderModule
+    MatSliderModule,
+    MatSnackBarModule,
+    MatTooltipModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
+import { ApplicationUtils } from 'src/app/services/application-utils.service';
 import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
@@ -19,7 +21,9 @@ export class LoginComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     private storageService: StorageService,
-    public dialogRef: MatDialogRef<LoginComponent>
+    public dialogRef: MatDialogRef<LoginComponent>,
+    private router: Router,
+    private applicationUtilService: ApplicationUtils
   ) {}
 
   ngOnInit(): void {}
@@ -42,14 +46,19 @@ export class LoginComponent implements OnInit {
           this.dialogRef.close();
         })
         .catch((error: any) => {
-          if (error.status != 404 || error.status != 422) {
-            this.dialogRef.close();
+          console.log(error.status);
+
+          if (error.status == 404) {
+            this.applicationUtilService.openSnackBar(
+              error.error.detail,
+              'app-notification-error'
+            );
           }
         });
     }
   }
 
-  register(){
+  register() {
     if (this.email.valid && this.password.valid && this.username.valid) {
       const data = {
         primary_email: this.email.value,
@@ -68,8 +77,11 @@ export class LoginComponent implements OnInit {
           this.dialogRef.close();
         })
         .catch((error: any) => {
-          if (error.status != 404 || error.status != 422) {
-            this.dialogRef.close();
+          if (error.status == 422) {
+            this.applicationUtilService.openSnackBar(
+              error.error.detail,
+              'app-notification-error'
+            );
           }
         });
     }

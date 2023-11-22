@@ -1,9 +1,9 @@
 <mat-card class="card">
-  <!-- <mat-progress-bar
-      *ngIf="isDataLoaded"
-      color="primary"
-      mode="indeterminate"
-    ></mat-progress-bar> -->
+  <mat-progress-bar
+    *ngIf="isDataLoaded"
+    color="primary"
+    mode="indeterminate"
+  ></mat-progress-bar>
   <mat-card-content class="card-padding">
     <div class="row">
       <div class="col-lg-12">
@@ -18,7 +18,7 @@
       </div>
     </div>
 
-    <div class="row spacing-level-4">
+    <div class="row spacing-level-4" *ngIf="!isDataLoaded">
       <div class="col-lg-6">
         <div class="row">
           <div class="col-lg-12">
@@ -30,7 +30,6 @@
             <app-audio-player
               *ngIf="!isDataLoaded"
               [audioUrl]="audioUrl"
-              [audioFile]="audioFile"
             ></app-audio-player>
           </div>
         </div>
@@ -44,13 +43,24 @@
         <div class="row spacing-level-2">
           <div class="col-lg-12">
             <app-audio-player
-              *ngIf="!isDataLoaded"
+              *ngIf="!isDataLoaded && convertedAudioFile"
               [audioUrl]="convertedAudioUrl"
               [audioFile]="convertedAudioFile"
               [type]="3"
             ></app-audio-player>
+            <div *ngIf="!convertedAudioFile" class="row">
+              <div class="col-lg-12 d-flex">
+                <div class="body-1 m-auto">Click convert button to see the magic</div>
+              </div>
+            </div>
           </div>
         </div>
+      </div>
+    </div>
+
+    <div *ngIf="isDataLoaded" class="row mt-4">
+      <div class="col-lg-12">
+        <div class="text-center headline-6">Loading data...</div>
       </div>
     </div>
 

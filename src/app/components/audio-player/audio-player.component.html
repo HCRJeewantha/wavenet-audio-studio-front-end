@@ -3,56 +3,68 @@
 <div class="row">
   <div class="col-lg-12 d-flex justify-content-center">
     <button
+      matTooltip="Add to library"
+      class="mx-1"
       [disabled]="isDataLoaded"
       *ngIf="!isAddedToPLaylist && audioFile"
       color="primary"
       (click)="addToPlaylist()"
-      mat-icon-button
+      mat-mini-fab
     >
-      <span class="material-symbols-outlined"> playlist_add </span>
+      <mat-icon>playlist_add</mat-icon>
     </button>
     <button
+      matTooltip="Remove from library"
+      class="mx-1"
       [disabled]="isDataLoaded"
       *ngIf="isAddedToPLaylist"
       color="primary"
       (click)="removeFromPlayList()"
-      mat-icon-button
+      mat-mini-fab
     >
-      <span class="material-symbols-outlined"> playlist_add_check </span>
+      <mat-icon>playlist_add_check</mat-icon>
     </button>
     <button
+      matTooltip="Replay"
+      class="mx-1"
       [disabled]="isDataLoaded"
       color="primary"
       (click)="restartAudio()"
-      mat-icon-button
+      mat-mini-fab
     >
-      <span class="material-symbols-outlined"> replay </span>
+      <mat-icon>replay</mat-icon>
     </button>
     <button
+      matTooltip="Play"
+      class="mx-1"
       [disabled]="isDataLoaded"
       color="primary"
       *ngIf="!isPlaying"
       (click)="playAudio()"
-      mat-icon-button
+      mat-mini-fab
     >
-      <span class="material-symbols-outlined"> play_circle </span>
+      <mat-icon>play_arrow</mat-icon>
     </button>
     <button
+      matTooltip="Pause"
+      class="mx-1"
       [disabled]="isDataLoaded"
       color="primary"
       *ngIf="isPlaying"
       (click)="pauseAudio()"
-      mat-icon-button
+      mat-mini-fab
     >
-      <span class="material-symbols-outlined"> pause_circle </span>
+      <mat-icon>pause</mat-icon>
     </button>
     <button
+      matTooltip="Stop"
+      class="mx-1"
       [disabled]="isDataLoaded"
       color="primary"
       (click)="stopAudio()"
-      mat-icon-button
+      mat-mini-fab
     >
-      <span class="material-symbols-outlined"> stop_circle </span>
+      <mat-icon>stop</mat-icon>
     </button>
   </div>
 </div>

@@ -46,15 +46,36 @@
     ></mat-row>
   </table>
 
-  <div class="logout-item">
-    <div class="row">
-      <div class="col-lg-12"></div>
-    </div>
-    <div class="row">
+  <div class="player-item">
+    <mat-progress-bar
+      *ngIf="isDataLoaded"
+      color="primary"
+      mode="indeterminate"
+    ></mat-progress-bar>
+
+    <div class="row m-2">
       <div class="col-lg-1 d-flex">
-        <button (click)="changePitch()" mat-fab class="m-auto">
-          <span class="material-symbols-outlined"> graphic_eq </span>
-        </button>
+        <div class="m-auto">
+          <div class="row">
+            <div class="col-lg-12">
+              <button
+                matTooltip="Audio tone changer"
+                (click)="changePitch()"
+                mat-fab
+                class="m-auto"
+              >
+                <mat-icon>equalizer</mat-icon>
+              </button>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-lg-12">
+              <button matTooltip="Text transcription" (click)="showText()" mat-fab class="m-auto">
+                <mat-icon> textsms</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="col-lg-11">
         <app-audio-player
@@ -72,7 +93,9 @@
       <img src="../../../assets/images/no-data.png" class="m-auto" alt="" />
       <div class="row spacing-level-4">
         <div class="col-lg-12">
-          <div class="headline-5 text-center">Oops! You don't have any recordings yet.</div>
+          <div class="headline-5 text-center">
+            Oops! You don't have any recordings yet.
+          </div>
         </div>
       </div>
     </div>

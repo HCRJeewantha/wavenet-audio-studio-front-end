@@ -12,6 +12,7 @@ import { ApiService } from 'src/app/services/api.service';
 import { StorageService } from 'src/app/services/storage.service';
 import WaveSurfer from 'wavesurfer.js';
 import { environment } from 'src/environments/environment.prod';
+import { ApplicationUtils } from 'src/app/services/application-utils.service';
 
 @Component({
   selector: 'app-audio-player',
@@ -35,7 +36,8 @@ export class AudioPlayerComponent implements OnInit, AfterViewInit, OnDestroy {
     private elementRef: ElementRef,
     private apiService: ApiService,
     private storageService: StorageService,
-    private http: HttpClient
+    private http: HttpClient,
+    private applicationUtilService: ApplicationUtils
   ) {}
 
   ngOnInit(): void {}
@@ -68,7 +70,7 @@ export class AudioPlayerComponent implements OnInit, AfterViewInit, OnDestroy {
       this.wavesurfer = null;
     }
   }
-  
+
   playAudio() {
     this.isPlaying = true;
     if (this.wavesurfer) {
@@ -115,6 +117,10 @@ export class AudioPlayerComponent implements OnInit, AfterViewInit, OnDestroy {
 
         this.isDataLoaded = false;
         this.playlistId = response.result.id;
+        this.applicationUtilService.openSnackBar(
+          'Audio added to library',
+          'app-notification-success'
+        );
       })
       .catch((error: any) => {
         this.isDataLoaded = false;
@@ -129,6 +135,10 @@ export class AudioPlayerComponent implements OnInit, AfterViewInit, OnDestroy {
       )
       .then((response: any) => {
         this.isAddedToPLaylist = false;
+        this.applicationUtilService.openSnackBar(
+          'Audio removed from library',
+          'app-notification-success'
+        );
 
         this.playlistId = null;
       })
