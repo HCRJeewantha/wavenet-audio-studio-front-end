@@ -1,0 +1,31 @@
+<mat-card class="card">
+  <mat-progress-bar
+    *ngIf="isDataLoaded"
+    color="primary"
+    mode="indeterminate"
+  ></mat-progress-bar>
+  <mat-card-content class="card-padding">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="headline-5 text-center" style="font-weight: 500">
+          Speech to Text
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="subtitle-1 text-center">
+          Text transcription for your audio
+        </div>
+      </div>
+    </div>
+    <div class="row spacing-level-3">
+      <div class="col-lg-12">
+        <div class="body-1" style="font-weight: 400;">
+            {{ textData?.result }}
+          </div>
+      </div>
+    </div>
+ 
+  </mat-card-content></mat-card
+>

@@ -32,7 +32,8 @@ import { MatSliderModule } from '@angular/material/slider';
 import { PichChangeComponent } from './pages/library/pich-change/pich-change.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
-
+import { MatExpansionModule } from '@angular/material/expansion';
+import { ShowTextTranscriptionModelComponent } from './pages/library/show-text-transcription-model/show-text-transcription-model.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,6 +48,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     RecordAudioModelComponent,
     ConvertOutputSttModelComponent,
     PichChangeComponent,
+    ShowTextTranscriptionModelComponent,
   ],
   imports: [
     FormsModule,
@@ -70,6 +72,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatSliderModule,
     MatSnackBarModule,
     MatTooltipModule,
+    MatExpansionModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

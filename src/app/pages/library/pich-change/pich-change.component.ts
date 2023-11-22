@@ -29,7 +29,7 @@ export class PichChangeComponent {
   }
 
   formatLabel(value: number): string {
-    return `${value}`;
+    return String(value);
   }
 
   convertAudio() {

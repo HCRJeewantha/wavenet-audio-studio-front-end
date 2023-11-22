@@ -7,6 +7,7 @@ import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { AudioPlayerComponent } from 'src/app/components/audio-player/audio-player.component';
 import { MatDialog } from '@angular/material/dialog';
 import { PichChangeComponent } from './pich-change/pich-change.component';
+import { ShowTextTranscriptionModelComponent } from './show-text-transcription-model/show-text-transcription-model.component';
 
 export interface PeriodicElement {
   name: string;
@@ -115,7 +116,17 @@ export class LibraryComponent implements OnInit {
       );
   }
 
-  showText(){
-    
+  showText() {
+    const model = this.dialog.open(ShowTextTranscriptionModelComponent, {
+      panelClass: 'popup-model',
+      width: '50%',
+      data: {
+        audioUrl: this.audioUrl,
+        audio: this.audio,
+      },
+    });
+    model.afterClosed().subscribe(() => {
+      this.getLibrary();
+    });
   }
 }
